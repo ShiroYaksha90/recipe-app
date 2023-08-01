@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-# before_action :authenticate_user
+  # before_action :authenticate_user
 
-def index
+  def index
     @user = User.all
-end
-
+  end
 end

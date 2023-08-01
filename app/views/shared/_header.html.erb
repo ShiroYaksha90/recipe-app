@@ -1,0 +1,20 @@
+<ul class="nav-bar">
+  <% if user_signed_in? %>
+    <li class="nav-item ">
+      <%= link_to 'Home' , root_path, class:'nav-link text-white mx-3 my-auto' %>
+    </li> 
+    <li class="nav-item ">
+      <%= link_to current_user.email, edit_user_registration_path, class:'nav-link text-white mx-3 my-auto' %>
+    </li>   
+    <li class="nav-item active">
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class:'nav-link text-white mx-3 my-auto' %>
+    </li>  
+  <% else %> 
+    <li class="nav-item">
+      <%= link_to 'Sign Up', new_user_registration_path, class:'nav-link text-white mx-3 my-auto' %>
+    </li>  
+    <li class="nav-item">
+      <%= link_to 'Sign In', new_user_session_path, class:'nav-link text-white mx-3 my-auto' %>
+    </li>   
+  <% end %>   
+</ul>

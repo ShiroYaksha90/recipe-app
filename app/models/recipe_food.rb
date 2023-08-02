@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FoodRecipe < ApplicationRecord
+class RecipeFood < ApplicationRecord
   belongs_to :recipe
   belongs_to :food
   validates :quantity, presence: true

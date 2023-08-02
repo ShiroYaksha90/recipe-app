@@ -1,25 +1,23 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, only: %i[show edit update destroy]
+  before_action  :authenticate_user!, only: %i[show edit update destroy]
+  before_action :set_recipe, only: %i[show update]
 
   def index
-    @user = User.find(params[:user_id])
-    @recipes = @user.recipe
+    @recipes = Recipe.all.includes([:user]).where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def new
-    @user = User.find(params[:user_id])
-    @recipe = @user.recipe.build
+    @user = current_user
+    @recipe = Recipe.new
   end
 
   def create
-    @recipe = current_user.recipe.new(recipe_params)
-
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
     if @recipe.save
-      flash[:notice] = 'Recipe was successfully created'
-      redirect_to user_recipes_path(current_user, @recipe), notice: 'Recipe was successfully created.'
+      redirect_to user_recipes_path(current_user.id), notice: 'Recipe Added successfully!'
     else
-      render :new
-      flash[:notice] = 'Recipe was not created.'
+      render :show
     end
   end
 
@@ -45,8 +43,8 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @user = User.find(params[:user_id])
-    @recipe = @user.recipes.find(params[:id])
-    @recipe_food = @recipe.recipe_foods
+    @recipe = @user.recipe.find(params[:id])
+    # @recipe_food = @recipe.recipe_foods
   end
 
   def recipe_params

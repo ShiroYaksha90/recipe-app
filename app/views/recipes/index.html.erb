@@ -1,0 +1,10 @@
+<h2><%= @user.name%></h2>
+  <div>
+    <%@recipes.each do |r|%>
+      <div>
+        <%= r.name%><br>
+        <%= button_to 'Remove',user_recipe_path(@user,), method: :delete %>
+      </div>
+    <%= r.description%><br>
+  </div>
+<%end%>

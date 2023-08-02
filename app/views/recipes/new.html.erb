@@ -1,0 +1,25 @@
+<%= form_with(model: [@user, @recipe], local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :prepration_time %>
+    <%= form.text_field :prepration_time %>
+  </div>
+  <div>
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :public %>
+    <%= form.text_field :public %>
+  </div>
+  <div>
+    <%= form.submit "Create Recipe" %>
+  </div>
+<%end%>

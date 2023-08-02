@@ -1,9 +1,9 @@
-<h2><%= @user.name%></h2>
+<h2>Recipes</h2>
   <div>
-    <%@recipes.each do |r|%>
+    <% @recipes.each do |r|%>
       <div>
-        <%= r.name%><br>
-        <%= button_to 'Remove',user_recipe_path(@user,), method: :delete %>
+        <%= link_to r.name, user_recipe_path(r.user_id,r.id)%><br>
+        <%# <%= button_to 'Remove',user_recipe_path(@user,), method: :delete %>
       </div>
     <%= r.description%><br>
   </div>

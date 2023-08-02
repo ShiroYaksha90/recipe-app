@@ -7,5 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :recipe
   has_many :food
-  validates :name, presence: true
+  # validates :name, presence: true
 end

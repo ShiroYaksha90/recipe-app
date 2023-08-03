@@ -1,0 +1,13 @@
+<%= form_with model: @recipe do |form| %>
+  <div>
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.submit "Add ingredient" %>
+  </div>
+<% end %>
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipe_path(@recipe.id) %>
+</div>

@@ -1,0 +1,27 @@
+<%= form_with model: @recipe, url: recipes_path, method: :post, local: true, scope: :recipe do |form| %>
+    <div>
+      <div>
+        <%= form.text_field :name, placeholder: 'Name'  %>
+      </div>
+  
+      <div>
+        <%= form.number_field :prepration_time, placeholder: 'Prepration time (mins)'  %>
+      </div>
+  
+       <div>
+        <%= form.number_field :cooking_time, placeholder: 'Cooking time (mins)'  %>
+      </div>
+  
+      <div>
+        <%= form.text_area :description, placeholder: 'Description' %>
+      </div>
+  
+       <div>
+        <%= form.label :public %>
+        <%= form.check_box :public %>
+      </div>
+  
+  
+      <%= form.submit "Add Recipe"%>
+    </div>
+  <% end %>

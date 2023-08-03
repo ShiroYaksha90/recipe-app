@@ -1,0 +1,13 @@
+<div>
+  <h2><%= @recipe.name %></h2>
+  <h3>Preparation time: <%= @recipe.preparation_time %> min(s)</h3>
+  <% if @recipe.public %>
+    <p>It is public</p>
+  <% elsif !@recipe.public %>
+    <p>Not public</p>
+  <% end %>
+  <h3>Cooking time: <%= @recipe.cooking_time %> min(s)</h3>
+  <h3>Step by Step Description </h3>
+  <p><%= @recipe.description %></p>
+
+</div>

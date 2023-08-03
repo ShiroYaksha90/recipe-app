@@ -1,0 +1,18 @@
+<div>
+  <h1>Recipes</h1>
+  <h3><%= link_to 'Click to Add new Recipe', new_recipe_path %></h3>
+  <div>
+    <% if @recipes.empty? %>
+      <p>No recipe's added yet, click button to add a new recipe</p>
+    <% end %>
+    <% @recipes.each do |recipe| %>
+      <% if can? :read, recipe %>
+        <h3><%= link_to "#{recipe.name}", recipe_path(recipe.id) %></h3>
+        <% if can? :destroy, recipe %>
+        <%= button_to "Delete recipe", recipe_path(recipe.id), method: :delete %>
+        <% end %>
+        <p><%= recipe.description %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

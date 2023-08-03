@@ -59,7 +59,7 @@ test:
   <<: *default
   database: recipe_test
   username: postgres
-  password: 1234
+  password: nyamirambo
   port: 5432
   host: localhost
 

@@ -1,0 +1,26 @@
+<table>
+  <% if recipe_foods.empty? %>
+  <p>No ingredients added yet </p>
+  <% else %>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Value</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% recipe_foods.each do |item| %>
+      <tr>
+        <td><%= item.food.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.food.price %></td>
+        <td>
+          <%= button_to 'Delete', recipe_recipe_food_path(recipe.id, item.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+<% end %> 
+</table>

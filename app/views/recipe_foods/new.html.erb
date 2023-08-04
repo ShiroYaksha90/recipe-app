@@ -1,13 +1,32 @@
-<%= form_with model: @recipe do |form| %>
-  <div>
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
+<div class="container">
+<%= form_with model: [@recipe, @recipe.recipe_foods.create] do |form| %>
+<div>
+<% if @recipe_food.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@recipe_food.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
 
+      <ul>
+        <% @recipe_food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
   <div>
-    <%= form.submit "Add ingredient" %>
+    <%= form.label :food %>
+    <%= form.select :food_id, Food.all.collect {|item| [item.name, item.id] },
+      { include_blank: true }, class: "form-field" %>
+  </div>
+  <div>
+    <%= form.number_field :quantity, placeholder: 'Quantity', class: "form-field" %>
+  </div>
+  <%= form.hidden_field :recipe_id, value: @recipe.id %>
+  <div>
+    <%= form.submit "Add ingredient", class: "link-wrapper"%>
   </div>
 <% end %>
 <div>
   <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipe_path(@recipe.id) %>
+</div>
 </div>

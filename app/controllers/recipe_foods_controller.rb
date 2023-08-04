@@ -8,11 +8,11 @@ class RecipeFoodsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.create(recipe_foods_params)
     if @recipe_food.save
-      flash[:notice] = 'Recipe successfully added'
+      flash[:notice] = 'Ingredient successfully added'
       redirect_to recipe_path(@recipe.id)
     else
       render :new
-      flash[:notice] = 'Error adding recipe'
+      flash[:notice] = 'Error adding Ingredient'
     end
   end
 

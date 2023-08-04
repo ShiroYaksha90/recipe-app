@@ -4,6 +4,6 @@ class Recipe < ApplicationRecord
   validates :name, :prepration_time, :cooking_time, :description, :public, presence: true
 
   def total_price
-    recipe_foods.sum { |item| item.quantity * item.food.price }
+    recipe_foods.sum { |item| item.quantity * item.food.price.to_i }
   end
 end

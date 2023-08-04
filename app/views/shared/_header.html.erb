@@ -1,20 +1,22 @@
-<ul class="nav-bar">
-  <% if user_signed_in? %>
-    <li class="nav-item ">
-      <%= link_to 'Home' , root_path, class:'nav-link text-white mx-3 my-auto' %>
-    </li> 
-    <li class="nav-item ">
-      <%= link_to current_user.email, edit_user_registration_path, class:'nav-link text-white mx-3 my-auto' %>
-    </li>   
-    <li class="nav-item active">
-        <%= link_to "Logout", logout_path, method: :delete %>
-        </li>  
-  <% else %> 
-    <li class="nav-item">
-      <%= link_to 'Sign Up', new_user_registration_path, class:'nav-link text-white mx-3 my-auto' %>
-    </li>  
-    <li class="nav-item">
-      <%= link_to 'Sign In', new_user_session_path, class:'nav-link text-white mx-3 my-auto' %>
-    </li>   
-  <% end %>   
-</ul>
+<nav class="nav flex">
+   <div class="image">
+     <%= image_tag "logo.jpg", size: "60x60", alt: "app logo" %>
+   </div>
+   <ul class="ul flex">
+     <li><%= link_to "Home", "#{user_signed_in? ? recipes_path : public_recipes_path}", class: "links" %></li>
+     <li><%= link_to "Foods", foods_path, class: "links"%></li>
+     <li><%= link_to "Recipes", "#{user_signed_in? ? recipes_path : public_recipes_path}", class: "links" %></li>
+     <li><%= link_to "Public Recipes", public_recipes_path, class: "links"%></li>
+   </ul>
+   <div class="flex registration">
+      <% if user_signed_in? %>
+      <p class="login">Logged in as <%= current_user.try(:name) %></p>
+      <% end %>
+      <% unless user_signed_in? %>
+      <button class="sign-out in">
+        <%= link_to "Log in", new_user_session_path, class: "links" %>
+      </button>
+      <% end %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "sign-out" %>
+   </div>
+</nav>

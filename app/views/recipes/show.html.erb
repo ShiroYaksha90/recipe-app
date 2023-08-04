@@ -1,13 +1,26 @@
-<div>
-  <h2><%= @recipe.name %></h2>
-  <h3>Preparation time: <%= @recipe.prepration_time %> min(s)</h3>
-  <% if @recipe.public %>
-    <p>It is public</p>
-  <% elsif !@recipe.public %>
-    <p>Not public</p>
-  <% end %>
-  <h3>Cooking time: <%= @recipe.cooking_time %> min(s)</h3>
-  <h3>Step by Step Description </h3>
+<div class="container">
+  <h2 class="recipe"><%= @recipe.name %></h2>
+  <h3 class="recipe-specs">Preparation time: <%= @recipe.prepration_time %> min(s)</h3>
+  <div class="public">
+    <% if @recipe.public %>
+      <p>Public <i class="fa-solid fa-toggle-on"></i></p>
+    <% elsif !@recipe.public %>
+      <p class="public-p">Not public <i class="fa-solid fa-toggle-off"></i></p>
+    <% end %>
+  </div>
+  <h3 class="recipe-specs">Cooking time: <%= @recipe.cooking_time %> min(s)</h3>
+  <h3 class="recipe-specs">Step by Step Description </h3>
   <p><%= @recipe.description %></p>
-
+  <div class="recipe-btns flex">
+    <button class="btn">
+      <%= link_to 'Generate Shopping List', new_recipe_recipe_food_path(@recipe.id), class: "links" %>
+    </button>
+    <button class="btn">
+      <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id), class: "links" %>
+    </button>
+  </div>
+  <%= render partial: 'table', locals: { recipe: @recipe, recipe_foods: @recipe_foods } %>
+</div>
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipes_path, class: "back-arrow links" %>
 </div>

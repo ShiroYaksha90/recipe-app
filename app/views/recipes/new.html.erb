@@ -1,27 +1,35 @@
+<div class="container">
+
 <%= form_with model: @recipe, url: recipes_path, method: :post, local: true, scope: :recipe do |form| %>
+  <h1 class="titles">Add Your Delicacy!  <i class="fa-solid fa-utensils"></i></h1>
+  <div>
     <div>
-      <div>
-        <%= form.text_field :name, placeholder: 'Name'  %>
-      </div>
-  
-      <div>
-        <%= form.number_field :prepration_time, placeholder: 'Prepration time (mins)'  %>
-      </div>
-  
-       <div>
-        <%= form.number_field :cooking_time, placeholder: 'Cooking time (mins)'  %>
-      </div>
-  
-      <div>
-        <%= form.text_area :description, placeholder: 'Description' %>
-      </div>
-  
-       <div>
-        <%= form.label :public %>
-        <%= form.check_box :public %>
-      </div>
-  
-  
-      <%= form.submit "Add Recipe"%>
+      <%= form.text_field :name, placeholder: 'Name of Recipe', class: "form-field"  %>
     </div>
-  <% end %>
+
+    <div>
+      <%= form.number_field :prepration_time, placeholder: 'Preparation time (mins)', class: "form-field"  %>
+    </div>
+
+     <div>
+      <%= form.number_field :cooking_time, placeholder: 'Cooking time (mins)', class: "form-field"  %>
+    </div>
+
+    <div>
+      <%= form.text_area :description, placeholder: 'Description', rows: 12,  class: "form-field" %>
+    </div>
+
+     <div>
+      <%= form.label :public %>
+      <%= form.check_box :public %>
+    </div>
+
+   
+      <%= form.submit "Add Recipe", class: "link-wrapper" %>
+    
+  </div>
+<% end %>
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipes_path, class: "back-arrow links" %>
+</div>
+</div>

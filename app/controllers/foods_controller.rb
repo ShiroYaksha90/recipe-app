@@ -1,6 +1,8 @@
 class FoodsController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @foods = Food.all.includes(:user)
+    @foods = Food.all.includes([:user])
   end
 
   def new
@@ -10,7 +12,7 @@ class FoodsController < ApplicationController
   def show; end
 
   def create
-    @food = Food.new(params_foods)
+    @food = Food.new(food_params)
     @food.user_id = current_user.id
 
     if @food.save
@@ -30,7 +32,7 @@ class FoodsController < ApplicationController
 
   private
 
-  def params_foods
+  def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 end

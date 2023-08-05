@@ -6,9 +6,9 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
+    food_id = params[:recipe_food][:food_id].to_i
     @recipe = Recipe.find(params[:recipe_id])
-    @foods = current_user.foods
-    @recipe_food = @recipe.recipe_foods.create(recipe_foods_params)
+    @recipe_food = @recipe.recipe_foods.create(quantity: params[:recipe_food][:quantity], food_id: food_id)
     if @recipe_food.save
       flash[:notice] = 'Recipe successfully added'
       redirect_to recipe_path(@recipe.id)
@@ -28,6 +28,6 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_foods_params
-    params.require(:recipe_food).permit(:quantity, :food_id)
+    params.require(:recipe_food).permit(:quantity, food_id: Integer)
   end
 end

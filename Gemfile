@@ -73,3 +73,6 @@ end
 
 gem 'cancancan'
 gem 'devise', '~> 4.9'
+gem 'pry'
+gem 'rails-controller-testing'
+gem 'rspec-rails'

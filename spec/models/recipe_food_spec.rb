@@ -9,8 +9,6 @@ RSpec.describe RecipeFood, type: :model do
     @recipe_food = @recipe.recipe_food.create(quantity: 2, food_id: @food.id, recipe_id: @recipe.id)
   end
 
-
-
   it 'checks it is not valid without a recipe id ' do
     @recipe_food.recipe_id = nil
     expect(@recipe_food).to_not be_valid

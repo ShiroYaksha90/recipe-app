@@ -210,8 +210,8 @@ thead {
 }
 
 .add-food {
-  margin-left: 85%;
-  margin-top: 2rem;
+    align-self: end;
+    margin: 2% 5% 0 0;
 }
 
 .shopping {

@@ -8,7 +8,7 @@ class RecipeFoodsController < ApplicationController
   def create
     food_id = params[:recipe_food][:food_id].to_i
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipe_foods.create(quantity: params[:recipe_food][:quantity], food_id: food_id)
+    @recipe_food = @recipe.recipe_foods.create(quantity: params[:recipe_food][:quantity], food_id:)
     if @recipe_food.save
       flash[:notice] = 'Recipe successfully added'
       redirect_to recipe_path(@recipe.id)

@@ -12,15 +12,21 @@
   <h3 class="recipe-specs">Step by Step Description </h3>
   <p><%= @recipe.description %></p>
   <div class="recipe-btns flex">
+  <% if can? :manage, @recipe %>
     <button class="btn">
-      <%= link_to 'Generate Shopping List', new_recipe_recipe_food_path(@recipe.id), class: "links" %>
+      <%= link_to 'Generate Shopping List', recipe_shopping_lists_path(@recipe), class: "links" %>
     </button>
     <button class="btn">
       <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id), class: "links" %>
     </button>
+    <% end %>
   </div>
   <%= render partial: 'table', locals: { recipe: @recipe, recipe_foods: @recipe_foods } %>
 </div>
 <div>
+  <% if user_signed_in? %>
   <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipes_path, class: "back-arrow links" %>
+  <% else %>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, public_recipes_path, class: "back-arrow links"%>
+  <% end %>
 </div>

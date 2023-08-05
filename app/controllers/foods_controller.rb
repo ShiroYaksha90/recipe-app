@@ -1,6 +1,10 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all.includes(:user)
+    @foods = if user_signed_in?
+               current_user.foods.includes(:user)
+             else
+               Food.all.includes([:user])
+             end
   end
 
   def new
@@ -10,12 +14,12 @@ class FoodsController < ApplicationController
   def show; end
 
   def create
-    @food = Food.new(params_foods)
+    @food = Food.new(food_params)
     @food.user_id = current_user.id
 
     if @food.save
       redirect_to foods_path
-      flash[:notice] = 'Food was successfully created'
+      flash[:notice] = 'Food was Successfully Created'
     else
       render :new
       flash[:notice] = 'Food has not been created'
@@ -30,7 +34,7 @@ class FoodsController < ApplicationController
 
   private
 
-  def params_foods
+  def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 end

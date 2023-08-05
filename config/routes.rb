@@ -1,19 +1,23 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    get 'logout', to: 'session#destroy', as: :logout
+    authenticated :user do
+      root 'recipes#index', as: :authenticated_root
+    end
+    unauthenticated do
+      root 'public_recipes#index', as: :unauthenticated_root
+    end
   end
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root 'foods#index'
+  # Defines the root path route ("/")
+  # root "articles#index"
 
-  resources :recipes, only: %i[index new create show destroy] do
-    resources :recipe_foods, only: %i[new create destroy update edit]
+  resources :recipes, only: [:index, :new, :create, :show, :destroy] do
+    resources :recipe_foods, only: [:new, :create, :destroy, :update, :edit]
+      resources :shopping_lists, only: [:index]
   end
-
-  resources :foods, only: %i[index new create show destroy]
-
+  resources :foods, only: [:index, :new, :create, :show, :destroy] 
   resources :public_recipes, only: [:index]
 end

@@ -1,0 +1,22 @@
+<nav class="nav flex">
+   <div class="image">
+     <%= image_tag "kitchen-logo.jpeg", size: "60x60", alt: "user photo" %>
+   </div>
+   <ul class="ul flex">
+     <li><%= link_to "Home", "#{user_signed_in? ? recipes_path : public_recipes_path}", class: "links" %></li>
+     <li><%= link_to "Foods", foods_path, class: "links"%></li>
+     <li><%= link_to "Recipes", "#{user_signed_in? ? recipes_path : public_recipes_path}", class: "links" %></li>
+     <li><%= link_to "Public Recipes", public_recipes_path, class: "links"%></li>
+   </ul>
+   <div class="flex registration">
+      <% if user_signed_in? %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "sign-out" %>
+      <p class="login">Logged in as <%= current_user.try(:name) %></p>
+      <% end %>
+      <% unless user_signed_in? %>
+      <button class="sign-out in">
+        <%= link_to "Log in", new_user_session_path, class: "links" %>
+      </button>
+      <% end %>
+   </div>
+</nav>

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Recipe</title>
+    <title>RecipeApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://kit.fontawesome.com/a738fb17fd.js" crossorigin="anonymous"></script>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-  <%= render 'shared/header'%>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   <%= render partial: 'layouts/nav' %>
     <%= yield %>
   </body>
 </html>

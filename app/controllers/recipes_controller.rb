@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all.includes([:user])
+    user_id = current_user.id
+    @recipes = Recipe.where(user_id:).includes(:user)
   end
 
   def show
@@ -13,7 +14,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(params_recipe)
+    @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
 
     if @recipe.save
@@ -34,7 +35,7 @@ class RecipesController < ApplicationController
 
   private
 
-  def params_recipe
-    params.require(:recipe).permit(:name, :prepration_time, :cooking_time, :description, :public)
+  def recipe_params
+    params.require(:recipe).permit(:name, :prepration_time, :description, :public, :cooking_time)
   end
 end

@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="titles">Shopping Lists </h1>
+  <div class="flex shopping">
+    <h4>Amount of food items to purchase: <%= @recipe_foods.count %></h4>
+    <h4>Total price of food items needed: <%= "$#{@total}" %>
+  </div>
+
+  <table class="table">
+  <% if @recipe_foods.empty? %>
+  <p>No ingredients included on recipe yet... </p>
+  <% else %>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe_foods.each do |item| %>
+      <tr>
+        <td><%= item.food.name %></td>
+        <td><%= item.quantity %><%= item.food.measurement_unit %></td>
+        <td><%= "$#{item.quantity.to_i * item.food.price}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<% end %> 
+</table>
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipe_path(@recipe.id), class: "back-arrow links" %>
+</div>
+</div>

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Recipe, type: :model do
   before :each do
     @user = User.create(name: 'Gino', email: 'gino@gmail.com', password: 'password123')
-    @recipe = Recipe.create(user: @user, name: 'spring rolls', preparation_time: 10, cooking_time: 15,
+    @recipe = Recipe.create(user: @user, name: 'spring rolls', prepration_time: 10, cooking_time: 15,
                             description: 'nice meal', public: true)
   end
 
@@ -11,8 +11,8 @@ RSpec.describe Recipe, type: :model do
     expect(@recipe).to be_valid
   end
 
-  it 'checks it is not valid without a preparation time ' do
-    @recipe.preparation_time = nil
+  it 'checks it is not valid without a prepration time ' do
+    @recipe.prepration_time = nil
     expect(@recipe).to_not be_valid
   end
 

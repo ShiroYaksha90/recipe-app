@@ -8,7 +8,7 @@ class ShoppingListsController < ApplicationController
   def sum(recipe_foods)
     total = 0
     recipe_foods.each do |item|
-      total += item.food.price * item.quantity.to_i
+      total += item.food.price.to_i * item.quantity
     end
     total
   end

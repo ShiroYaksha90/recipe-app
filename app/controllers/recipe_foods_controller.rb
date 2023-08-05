@@ -7,6 +7,7 @@ class RecipeFoodsController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
+    @foods= current_user.foods
     @recipe_food = @recipe.recipe_foods.create(recipe_foods_params)
     if @recipe_food.save
       flash[:notice] = 'Recipe successfully added'

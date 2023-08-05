@@ -15,7 +15,7 @@
       <tr>
         <td><%= item.food.name %></td>
         <td><%= item.quantity %></td>
-        <td><%= "$#{item.quantity.to_i * item.food.price}" %></td>
+        <td><%= "$#{item.quantity * item.food.price.to_i}" %></td>
         <td>
           <%if can? :manage, recipe %>
           <%= button_to 'Delete', recipe_recipe_food_path(recipe.id, item.id), class: "delete row-delete", method: :delete %>

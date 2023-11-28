@@ -1,0 +1,19 @@
+<div class="container">
+<%= form_with model: [@recipe, @recipe.recipe_foods.create] do |form| %>
+  <div>
+    <%= form.label :food %>
+    <%= form.select :food_id, @foods.map { |food| [food.name, food.id] },
+      { include_blank: true }, class: "form-field" %>
+  </div>
+  <div>
+    <%= form.number_field :quantity, placeholder: 'Quantity', class: "form-field" %>
+  </div>
+
+  <div>
+    <%= form.submit "Add ingredient", class: "link-wrapper"%>
+  </div>
+<% end %>
+<div>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, recipe_path(@recipe.id) %>
+</div>
+</div>

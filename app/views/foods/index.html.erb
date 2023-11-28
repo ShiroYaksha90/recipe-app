@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+<button class="btn add-food"><%= link_to 'New Food', new_food_path, class: "links" %></button>
+<% end %>
+<table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th> Action</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @foods.each do |food| %>
+        <tr>
+            <td><%= food.name %></td>
+            <td><%= food.measurement_unit %></td>
+            <td>$<%= food.price %></td>
+            <td>
+              <% if can? :manage, food %>
+              <%= button_to 'Delete', food_path(food), method: :delete, data: { turbo: false }, class: "delete row-delete" %>
+              <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>

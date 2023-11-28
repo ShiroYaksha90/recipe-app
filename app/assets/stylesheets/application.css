@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Julee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +16,208 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+body {
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #ece4e4;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  margin-top: 4rem;
+  width: 60%;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration {
+  gap: 1rem;
+  margin-left: 5%;
+  margin-top: 2rem;
+  align-items: center;
+  width: 12%;
+}
+
+.titles {
+  font-family: 'Julee', cursive;
+  text-align: center;
+  color: #a30000;
+}
+
+.recipe {
+  color: #a30000;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.recipe-specs {
+  margin-top: 3rem;
+}
+
+.public {
+  position: absolute;
+  width: 10rem;
+  right: 10rem;
+  top: 20%;
+}
+
+.fa-toggle-on,
+.login {
+  color: rgba(4, 178, 4, 0.985);
+}
+
+.in {
+  background-color: rgba(4, 178, 4, 0.985);
+}
+
+.sign-out {
+  padding: 0.5rem;
+  color: #ffffffea;
+  background-color: #a30000;
+  border: none;
+  border-radius: 5px;
+}
+
+.fa-toggle-off {
+  color: rgba(246, 49, 49, 0.902);
+}
+
+.links {
+  text-decoration: none;
+  color: #ffffffea;
+}
+
+.links:hover {
+  color: #a30000;
+}
+
+.link-wrapper {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #3a3131;
+  width: 11rem;
+  color: #ffffffea;
+}
+
+.add-recipe {
+  margin-left: 90%;
+  margin-top: 4rem;
+}
+
+.recipes {
+  background-color: #3a3131;
+  border-radius: 8px;
+  width: 80%;
+  color: #ffffffea;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  align-items: center;
+  gap: 5rem;
+}
+
+.recipe-btns {
+  margin-top: 5rem;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+  border-bottom: 0.5px solid #a30000;
+}
+
+.btn {
+  background-color: #3a3131;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.delete {
+  margin-top: 0.7rem;
+  background-color: #a30000;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: #ffffffea;
+}
+
+.form-field {
+  width: 40%;
+  padding: 1.2rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.back-arrow {
+  margin-top: 8rem;
+  color: #3a3131;
+  font-size: 2rem;
+}
+
+table {
+  width: 90%;
+  margin-top: 2rem;
+  margin-inline: auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid #3a3131;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #a30000b1;
+  color: #fff;
+}
+
+thead {
+  background-color: #3a3131;
+  color: #ffffffea;
+}
+
+.nav {
+  width: 100%;
+  align-items: center;
+  background-color: #3a3131;
+}
+
+.ul {
+  list-style: none;
+  width: 30rem;
+  gap: 1rem;
+  margin-left: 40%;
+}
+
+.image {
+  width: 5rem;
+  margin-left: 5%;
+}
+
+.add-food {
+  align-self: end;
+  margin: 2% 5% 0 0;
+}
+
+.shopping {
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  width: 100%;
+}

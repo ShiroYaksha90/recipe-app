@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="titles">Welcome to Our Kitchen! Take a look at our sizzling Recipes</h1>
+  <div class="link-wrapper add-recipe"><%= link_to 'Add new Recipe', new_recipe_path, class: "links" %></div>
+  <div>
+    <% if @recipes.empty? %>
+      <p>No recipe's added yet, click button to add a new recipe</p>
+    <% end %>
+    <% @recipes.each do |recipe| %>
+      <div class="recipes flex">
+        <div>
+          <% if can? :read, recipe %>
+          <h3><%= link_to "#{recipe.name}", recipe_path(recipe.id), class: "links" %></h3>
+          <% if can? :destroy, recipe %>
+          <%= button_to "Delete recipe", recipe_path(recipe.id), class: "delete", method: :delete %>
+          <% end %>
+        </div>
+        <p><%= recipe.description %></p>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
